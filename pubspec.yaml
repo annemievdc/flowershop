@@ -17,3 +17,24 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Cinzel
+      fonts:
+        - asset: assets/fonts/Cinzel-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/Cinzel-Regular.ttf
+          weight: 400
+
+    - family: Cormorant
+      fonts:
+        - asset: assets/fonts/Cormorant-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/Cormorant-Italic.ttf
+          style: italic
+          weight: 400
+        - asset: assets/fonts/Cormorant-Regular.ttf
+          weight: 400
+
+  assets:
+    - assets/images/
