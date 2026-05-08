@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'app_theme.dart';
 
+//titels
 class AppTextStyles {
   static TextStyle title(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cinzel',
+      fontWeight: FontWeight.bold,
       fontSize: MediaQuery.of(context).size.width * 0.07,
-      fontWeight: FontWeight.w800,
       color: AppTheme.boneWhite,
-      letterSpacing: 1.3,
+      letterSpacing: 1.5,
     );
   }
 
@@ -16,28 +17,35 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: 'Cinzel',
       fontSize: MediaQuery.of(context).size.width * 0.04,
-      fontWeight: FontWeight.w400,
       color: AppTheme.boneWhite,
-      letterSpacing: 0.5,
+      letterSpacing: 1.6,
     );
   }
 
   static TextStyle cardtitle(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cinzel',
-      fontSize: MediaQuery.of(context).size.width * 0.03,
-      fontWeight: FontWeight.w600,
+      fontSize: 18,
+      color: AppTheme.boneWhite,
+      letterSpacing: 0.8,
+    );
+  }
+
+  static TextStyle cardsubtitle(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cinzel',
+      fontSize: 14,
+      fontStyle: FontStyle.normal,
       color: AppTheme.boneWhite,
     );
   }
 
+  //gewone tekst
   static TextStyle body(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
       fontSize: MediaQuery.of(context).size.width * 0.035,
-      fontWeight: FontWeight.w400,
       color: AppTheme.boneWhite,
-      height: 1.3,
     );
   }
 
@@ -45,10 +53,8 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: 'Cormorant',
       fontSize: MediaQuery.of(context).size.width * 0.04,
-      fontWeight: FontWeight.w400,
       fontStyle: FontStyle.italic,
       color: AppTheme.boneWhite,
-      height: 1.3,
     );
   }
 }

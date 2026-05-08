@@ -5,9 +5,9 @@ class AppTheme {
   static const Color richBlack = Color(0xFF0D0D0F);
   static const Color charcoal = Color(0xFF1F1F2E);
   static const Color darkSlate = Color(0xFF2E2E3E);
-  static const Color mutedPurple = Color(0xFF4B4B6E);
+  static const Color mutedPurple = Color.fromARGB(255, 143, 143, 186);
   static const Color stoneGray = Color(0xFF7A7A8C);
-  static const Color boneWhite = Color(0xFFE8E8EA);
+  static const Color boneWhite = Color.fromARGB(255, 206, 206, 208);
 
   //dark theme
   static ThemeData darkTheme = ThemeData(
