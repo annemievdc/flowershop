@@ -6,7 +6,7 @@ class CartItem {
 
   CartItem({required this.flower, this.quantity = 1});
 
-  double get totalPrice {
+  double get totalPricePerItem {
     return flower.price * quantity;
   }
 }

@@ -18,9 +18,10 @@ class CartViewModel {
 
   void removeFlower(Flower flower) {
     final index = cart.indexWhere((item) => item.flower.id == flower.id);
-    if (index == -1)
-      return; //doe niks
-    else {
+    if (index == -1) return; //doe niks
+    if (cart[index].quantity > 1) {
+      cart[index].quantity--;
+    } else {
       cart.removeAt(index);
     }
   }
@@ -29,5 +30,13 @@ class CartViewModel {
     final index = cart.indexWhere((item) => item.flower.id == flower.id);
     if (index == -1) return 0;
     return cart[index].quantity;
+  }
+
+  double get cartTotalPrice {
+    double cartTotalPrice = 0;
+    for (final item in cart) {
+      cartTotalPrice += item.totalPricePerItem;
+    }
+    return cartTotalPrice;
   }
 }

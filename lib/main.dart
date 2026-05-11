@@ -1,3 +1,4 @@
+import 'package:flowershop/viewmodels/cart_view_model.dart';
 import 'package:flowershop/views/flower_page.dart';
 import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
@@ -19,14 +20,14 @@ class AppRoot extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: const FlowerApp(),
+      home: FlowerApp(),
     );
   }
 }
 
 class FlowerApp extends StatelessWidget {
-  const FlowerApp({super.key});
-
+  FlowerApp({super.key});
+  final CartViewModel cartViewModel = CartViewModel();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -55,7 +56,12 @@ class FlowerApp extends StatelessWidget {
         ),
 
         body: TabBarView(
-          children: [FlowerPage(), MessagePage(), CartPage(), InfoPage()],
+          children: [
+            FlowerPage(cartViewModel: cartViewModel),
+            MessagePage(),
+            CartPage(cartViewModel: cartViewModel),
+            InfoPage(),
+          ],
         ),
       ),
     );

@@ -7,35 +7,16 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: 'Cinzel',
       fontWeight: FontWeight.bold,
-      fontSize: MediaQuery.of(context).size.width * 0.07,
+      fontSize: MediaQuery.of(context).size.width * 0.08,
       color: AppTheme.boneWhite,
-      letterSpacing: 1.5,
+      letterSpacing: 2.5,
     );
   }
 
   static TextStyle subtitle(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cinzel',
-      fontSize: MediaQuery.of(context).size.width * 0.04,
-      color: AppTheme.boneWhite,
-      letterSpacing: 1.6,
-    );
-  }
-
-  static TextStyle cardtitle(BuildContext context) {
-    return TextStyle(
-      fontFamily: 'Cinzel',
-      fontSize: 18,
-      color: AppTheme.boneWhite,
-      letterSpacing: 0.8,
-    );
-  }
-
-  static TextStyle cardsubtitle(BuildContext context) {
-    return TextStyle(
-      fontFamily: 'Cinzel',
-      fontSize: 14,
-      fontStyle: FontStyle.normal,
+      fontSize: MediaQuery.of(context).size.width * 0.06,
       color: AppTheme.boneWhite,
     );
   }
@@ -44,7 +25,7 @@ class AppTextStyles {
   static TextStyle body(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: MediaQuery.of(context).size.width * 0.035,
+      fontSize: 29,
       color: AppTheme.boneWhite,
     );
   }
@@ -52,8 +33,47 @@ class AppTextStyles {
   static TextStyle italic(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: MediaQuery.of(context).size.width * 0.04,
+      fontSize: 16,
       fontStyle: FontStyle.italic,
+      color: AppTheme.boneWhite,
+    );
+  }
+
+  //cards
+  static TextStyle cardtitle(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cormorant',
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: AppTheme.boneWhite,
+      letterSpacing: 0.8,
+    );
+  }
+
+  static TextStyle cardsubtitle(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cormorant',
+
+      fontSize: 22,
+      fontStyle: FontStyle.italic,
+      color: AppTheme.boneWhite,
+    );
+  }
+
+  static TextStyle cardbodybold(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cormorant',
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      color: AppTheme.boneWhite,
+    );
+  }
+
+  static TextStyle cardbody(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cormorant',
+      fontSize: 18,
+      fontWeight: FontWeight.normal,
       color: AppTheme.boneWhite,
     );
   }

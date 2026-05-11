@@ -6,15 +6,15 @@ import '../theme/app_text_styles.dart';
 import '../widgets/flower_card.dart';
 
 class FlowerPage extends StatefulWidget {
-  const FlowerPage({super.key});
+  final CartViewModel cartViewModel;
+
+  const FlowerPage({super.key, required this.cartViewModel});
 
   @override
   State<FlowerPage> createState() => _FlowerPageState();
 }
 
 class _FlowerPageState extends State<FlowerPage> {
-  final CartViewModel cartViewModel = CartViewModel();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,15 +48,15 @@ class _FlowerPageState extends State<FlowerPage> {
 
                   return FlowerCard(
                     flower: flower,
-                    quantity: cartViewModel.quantityFor(flower),
+                    quantity: widget.cartViewModel.quantityFor(flower),
                     onAdd: () {
                       setState(() {
-                        cartViewModel.addFlower(flower);
+                        widget.cartViewModel.addFlower(flower);
                       });
                     },
                     onRemove: () {
                       setState(() {
-                        cartViewModel.removeFlower(flower);
+                        widget.cartViewModel.removeFlower(flower);
                       });
                     },
                   );

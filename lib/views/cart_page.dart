@@ -1,8 +1,11 @@
 import 'package:flowershop/theme/app_text_styles.dart';
+import 'package:flowershop/viewmodels/cart_view_model.dart';
+import 'package:flowershop/widgets/cartitem_card.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  final CartViewModel cartViewModel;
+  const CartPage({super.key, required this.cartViewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -21,24 +24,40 @@ class CartPage extends StatelessWidget {
                 ),
               ),
             ),
-
             Expanded(
-              child: ListView.builder(
-                itemCount: 12,
-                scrollDirection: Axis.vertical,
-
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 50,
-                      width: double.infinity,
-                      color: Colors.green,
-                      child: Text("Item vd cart"),
+              child: cartViewModel.cart.isEmpty
+                  ? Center(
+                      child: Text(
+                        'Nog geen botanische offers gekozen...',
+                        style: AppTextStyles.body(context),
+                      ),
+                    ) //als leeg
+                  : ListView.builder(
+                      //en anders doe build listview
+                      itemCount: cartViewModel.cart.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == cartViewModel.cart.length) {
+                          return Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Totaal : ',
+                                  style: AppTextStyles.cardtitle(context),
+                                ),
+                                Text(
+                                  '${cartViewModel.cartTotalPrice.toStringAsFixed(2)} €',
+                                  style: AppTextStyles.cardtitle(context),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                        final item = cartViewModel.cart[index];
+                        return CartItemCard(item: item);
+                      },
                     ),
-                  );
-                },
-              ),
             ),
           ],
         ),

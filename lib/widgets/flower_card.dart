@@ -33,7 +33,7 @@ class FlowerCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
-              flex: 4,
+              flex: 5,
               child: ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                 child: SizedBox(
@@ -43,13 +43,15 @@ class FlowerCard extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 3,
+              flex: 2,
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(8),
+
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
+
                   children: [
                     Text(
                       flower.commonName,
@@ -61,50 +63,48 @@ class FlowerCard extends StatelessWidget {
                     ),
                     Text(
                       '${flower.price} €',
-                      style: AppTextStyles.italic(context),
+                      style: AppTextStyles.cardbodybold(context),
                     ),
-                    SizedBox(height: 10),
+                    //----------Ruimte ertussen
+                    SizedBox(height: 5),
                     // -----------------AANTAL BLOEMEN------------------------------------------
                     if (quantity > 0)
                       SizedBox(
-                        height: 20,
-
+                        height: 28,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             InkWell(
                               borderRadius: BorderRadius.circular(20),
                               onTap: onRemove,
-
                               child: const Padding(
                                 padding: EdgeInsets.all(4),
                                 child: Icon(
                                   FontAwesomeIcons.circleMinus,
-                                  size: 16,
+                                  size: 18,
                                 ),
                               ),
                             ),
 
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                              ),
-
-                              child: Text(
-                                '$quantity',
-                                style: AppTextStyles.cardsubtitle(context),
+                            SizedBox(
+                              width: 28,
+                              child: Center(
+                                child: Text(
+                                  '$quantity',
+                                  style: AppTextStyles.cardbody(context),
+                                ),
                               ),
                             ),
 
                             InkWell(
                               borderRadius: BorderRadius.circular(20),
                               onTap: onAdd,
-
                               child: const Padding(
                                 padding: EdgeInsets.all(4),
                                 child: Icon(
                                   FontAwesomeIcons.circlePlus,
-                                  size: 16,
+                                  size: 18,
                                 ),
                               ),
                             ),
