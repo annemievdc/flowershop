@@ -48,8 +48,8 @@ class FlowerApp extends StatelessWidget {
           labelColor: AppTheme.boneWhite,
           unselectedLabelColor: AppTheme.mutedPurple,
           tabs: [
-            Tab(icon: Icon(FontAwesomeIcons.leaf), text: "Bloemen"),
-            Tab(icon: Icon(FontAwesomeIcons.scroll), text: "Boodschap"),
+            Tab(icon: Icon(FontAwesomeIcons.fan), text: "Bloemen"),
+            Tab(icon: Icon(FontAwesomeIcons.featherPointed), text: "Boodschap"),
             Tab(icon: Icon(FontAwesomeIcons.basketShopping), text: "Mand"),
             Tab(icon: Icon(FontAwesomeIcons.eye), text: "Info"),
           ],
@@ -58,7 +58,7 @@ class FlowerApp extends StatelessWidget {
         body: TabBarView(
           children: [
             FlowerPage(cartViewModel: cartViewModel),
-            MessagePage(),
+            MessagePage(cartViewModel: cartViewModel),
             CartPage(cartViewModel: cartViewModel),
             InfoPage(),
           ],

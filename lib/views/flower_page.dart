@@ -26,7 +26,7 @@ class _FlowerPageState extends State<FlowerPage> {
               padding: const EdgeInsets.all(10.0),
               child: Center(
                 child: Text(
-                  'Onheilspellend Elegant',
+                  'Stel je boeket samen...',
                   style: AppTextStyles.subtitle(context),
                   maxLines: 1,
                 ),

@@ -7,7 +7,7 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: 'Cinzel',
       fontWeight: FontWeight.bold,
-      fontSize: MediaQuery.of(context).size.width * 0.08,
+      fontSize: MediaQuery.of(context).size.width * 0.06,
       color: AppTheme.boneWhite,
       letterSpacing: 2.5,
     );
@@ -16,7 +16,7 @@ class AppTextStyles {
   static TextStyle subtitle(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cinzel',
-      fontSize: MediaQuery.of(context).size.width * 0.06,
+      fontSize: MediaQuery.of(context).size.width * 0.04,
       color: AppTheme.boneWhite,
     );
   }

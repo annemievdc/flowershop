@@ -1,9 +1,11 @@
 import 'package:flowershop/models/cart_item.dart';
+import 'package:flowershop/models/message.dart';
 
 import '../models/flower.dart';
 
 class CartViewModel {
   final List<CartItem> cart = [];
+  Message? selectedMessage;
 
   void addFlower(Flower flower) {
     //zoek waar de bloem met id x in de lijst zit, vergelijk op id.
@@ -38,5 +40,9 @@ class CartViewModel {
       cartTotalPrice += item.totalPricePerItem;
     }
     return cartTotalPrice;
+  }
+
+  void addMessage(Message message) {
+    selectedMessage = message;
   }
 }

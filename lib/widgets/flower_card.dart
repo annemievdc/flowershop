@@ -33,7 +33,7 @@ class FlowerCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
-              flex: 5,
+              flex: 4,
               child: ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                 child: SizedBox(
@@ -43,7 +43,7 @@ class FlowerCard extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Container(
                 width: double.infinity,
 
