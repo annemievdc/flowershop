@@ -15,7 +15,9 @@ class CartItemCard extends StatelessWidget {
         child: Row(
           children: <Widget>[
             CircleAvatar(
-              backgroundImage: AssetImage(item.flower.imageUrl),
+              backgroundImage: item.flower.imageUrl.startsWith('http')
+                  ? NetworkImage(item.flower.imageUrl)
+                  : AssetImage(item.flower.imageUrl),
               minRadius: 30,
             ),
             const SizedBox(width: 16),
@@ -23,7 +25,7 @@ class CartItemCard extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    item.flower.commonName,
+                    item.flower.name,
                     style: AppTextStyles.cardsubtitle(context),
                   ),
                   Text(

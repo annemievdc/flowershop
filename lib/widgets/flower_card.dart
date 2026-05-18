@@ -1,5 +1,6 @@
 import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
+import 'package:flowershop/widgets/flower_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/flower.dart';
@@ -33,18 +34,18 @@ class FlowerCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
-              flex: 4,
+              flex: 6,
               child: ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                 child: SizedBox(
                   width: double.infinity,
-                  child: Image.asset(flower.imageUrl, fit: BoxFit.cover),
+                  child: flowerImage(flower.imageUrl),
                 ),
               ),
             ),
             Expanded(
-              flex: 3,
-              child: Container(
+              flex: 5,
+              child: SizedBox(
                 width: double.infinity,
 
                 child: Column(
@@ -53,10 +54,7 @@ class FlowerCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
 
                   children: [
-                    Text(
-                      flower.commonName,
-                      style: AppTextStyles.cardtitle(context),
-                    ),
+                    Text(flower.name, style: AppTextStyles.cardtitle(context)),
                     Text(
                       flower.scientificName,
                       style: AppTextStyles.cardsubtitle(context),

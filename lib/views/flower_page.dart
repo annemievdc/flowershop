@@ -1,4 +1,4 @@
-import 'package:flowershop/viewmodels/cart_view_model.dart';
+/* import 'package:flowershop/viewmodels/cart_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../data/flower_data.dart';
@@ -69,3 +69,4 @@ class _FlowerPageState extends State<FlowerPage> {
     );
   }
 }
+ */

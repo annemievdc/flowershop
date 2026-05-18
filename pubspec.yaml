@@ -10,11 +10,22 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter : ^10.7.0
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/applogo2.png"
+
+  adaptive_icon_background: "#E8E8EA"
+  adaptive_icon_foreground : "assets/images/applogo2.png"
+
 
 flutter:
   uses-material-design: true
