@@ -3,10 +3,10 @@ import 'package:flowershop/theme/app_theme.dart';
 import 'package:flowershop/viewmodels/cart_view_model.dart';
 import 'package:flutter/material.dart';
 
-// import '../data/flower_data.dart';
-import 'package:flowershop/services/flower_api_service.dart';
 import '../theme/app_text_styles.dart';
 import '../widgets/flower_card.dart';
+
+import 'package:flowershop/services/flower_firestore_service.dart';
 
 class FlowerPage extends StatefulWidget {
   final CartViewModel cartViewModel;
@@ -18,13 +18,15 @@ class FlowerPage extends StatefulWidget {
 }
 
 class _FlowerPageState extends State<FlowerPage> {
-  final FlowerApiService apiService = FlowerApiService();
+  final FlowerFirestoreService flowerService =
+      FlowerFirestoreService(); //ipv the api,gebruik firebase
   late Future<List<Flower>> flowersFuture;
 
   @override
   void initState() {
     super.initState();
-    flowersFuture = apiService.fetchFlowers();
+    flowersFuture = flowerService
+        .getFlowers(); //getflowers methode uit de firestore service
   }
 
   @override

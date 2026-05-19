@@ -21,32 +21,58 @@ class FlowerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isSelected = quantity > 0;
+    final bool maxReached = quantity >= flower.stockQuantity;
+    final bool isOutOfStock = flower.stockQuantity <= 0;
+
     return InkWell(
       borderRadius: BorderRadius.circular(20),
-      onTap: onAdd,
+      onTap: maxReached || isOutOfStock ? null : onAdd,
       child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        margin: EdgeInsets.all(4),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(
+            color: isSelected
+                ? AppTheme.mutedPurple
+                : AppTheme.mutedPurple.withOpacity(0.25),
+            width: isSelected ? 1.4 : 0.7,
+          ),
+        ),
 
         color: AppTheme.darkSlate,
-        elevation: 10,
+        elevation: isSelected ? 12 : 7,
         shadowColor: AppTheme.mutedPurple,
+        clipBehavior: Clip
+            .antiAlias, //image blijft netjes binnen de card,geen overhangende hoeken
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
-              flex: 6,
-              child: ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: flowerImage(flower.imageUrl),
-                ),
+              flex: 5,
+              child: Stack(
+                children: [
+                  Positioned.fill(child: flowerImage(flower.imageUrl)),
+                  if (flower.toxic)
+                    Positioned(
+                      top: 8,
+                      left: 8,
+                      child: Container(
+                        padding: EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: AppTheme.charcoal,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(FontAwesomeIcons.skull, size: 12),
+                      ),
+                    ),
+                ],
               ),
             ),
             Expanded(
-              flex: 5,
-              child: SizedBox(
-                width: double.infinity,
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
 
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,61 +80,94 @@ class FlowerCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
 
                   children: [
-                    Text(flower.name, style: AppTextStyles.cardtitle(context)),
+                    Text(
+                      flower.name,
+                      style: AppTextStyles.cardtitle(context),
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                    ),
                     Text(
                       flower.scientificName,
                       style: AppTextStyles.cardsubtitle(context),
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
                     ),
-                    Text(
-                      '${flower.price} €',
-                      style: AppTextStyles.cardbodybold(context),
-                    ),
-                    //----------Ruimte ertussen
-                    SizedBox(height: 5),
-                    // -----------------AANTAL BLOEMEN------------------------------------------
-                    if (quantity > 0)
-                      SizedBox(
-                        height: 28,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              borderRadius: BorderRadius.circular(20),
-                              onTap: onRemove,
-                              child: const Padding(
-                                padding: EdgeInsets.all(4),
-                                child: Icon(
-                                  FontAwesomeIcons.circleMinus,
-                                  size: 18,
-                                ),
-                              ),
-                            ),
 
-                            SizedBox(
-                              width: 28,
-                              child: Center(
-                                child: Text(
-                                  '$quantity',
-                                  style: AppTextStyles.cardbody(context),
-                                ),
-                              ),
-                            ),
-
-                            InkWell(
-                              borderRadius: BorderRadius.circular(20),
-                              onTap: onAdd,
-                              child: const Padding(
-                                padding: EdgeInsets.all(4),
-                                child: Icon(
-                                  FontAwesomeIcons.circlePlus,
-                                  size: 18,
-                                ),
-                              ),
-                            ),
-                          ],
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${flower.price.toStringAsFixed(2)} €',
+                          style: AppTextStyles.cardbodybold(context),
                         ),
-                      ),
+                        SizedBox(width: 10),
+                        quantity == 0
+                            //toevoegen +
+                            ? InkWell(
+                                borderRadius: BorderRadius.circular(20),
+                                onTap: maxReached || isOutOfStock
+                                    ? null
+                                    : onAdd,
+                                child: Container(
+                                  padding: EdgeInsets.all(7),
+                                  decoration: BoxDecoration(
+                                    color: AppTheme.mutedPurple,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(FontAwesomeIcons.plus, size: 12),
+                                ),
+                              )
+                            //toevoegen pilvorm met + en -
+                            : Container(
+                                height: 28,
+                                decoration: BoxDecoration(
+                                  color: AppTheme.richBlack,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color: AppTheme.mutedPurple,
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(20),
+                                      onTap: onRemove,
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 7,
+                                        ),
+                                        child: Icon(
+                                          FontAwesomeIcons.minus,
+                                          size: 12,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      '$quantity',
+                                      style: AppTextStyles.cardbody(context),
+                                    ),
+                                    InkWell(
+                                      borderRadius: BorderRadius.circular(20),
+                                      onTap: maxReached ? null : onAdd,
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 7,
+                                        ),
+                                        child: Icon(
+                                          FontAwesomeIcons.plus,
+                                          size: 12,
+                                          color: maxReached
+                                              ? AppTheme.stoneGray
+                                              : null,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                      ],
+                    ),
                   ],
                 ),
               ),

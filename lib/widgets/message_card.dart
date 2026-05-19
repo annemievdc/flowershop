@@ -28,27 +28,27 @@ class MessageCard extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
             side: BorderSide(
-              color: isSelected ? AppTheme.boneWhite : Colors.transparent,
-              width: 2,
+              color: isSelected
+                  ? AppTheme.mutedPurple
+                  : AppTheme.mutedPurple.withOpacity(0.25),
+              width: isSelected ? 1.4 : 0.7,
             ),
           ),
           color: isSelected ? AppTheme.stoneGray : AppTheme.darkSlate,
-
           elevation: 10,
           shadowColor: AppTheme.mutedPurple,
+
           child: Padding(
-            padding: const EdgeInsets.all(18),
+            padding: const EdgeInsets.all(8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   FontAwesomeIcons.featherPointed,
-                  size: 26,
                   color: AppTheme.mutedPurple,
+                  size: 18,
                 ),
-
-                const SizedBox(height: 14),
-
+                SizedBox(height: 16),
                 Text(
                   message.messagecontent,
                   textAlign: TextAlign.center,

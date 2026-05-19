@@ -1,6 +1,5 @@
 import 'package:flowershop/viewmodels/cart_view_model.dart';
-// import 'package:flowershop/views/flower_page.dart';
-import 'package:flowershop/views/flower_page_met_api.dart';
+import 'package:flowershop/views/flower_page_firestore.dart';
 import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +7,14 @@ import 'package:flowershop/views/cart_page.dart';
 import 'package:flowershop/views/message_page.dart';
 import 'package:flowershop/views/info_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const AppRoot());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  runApp(AppRoot());
 }
 
 class AppRoot extends StatelessWidget {

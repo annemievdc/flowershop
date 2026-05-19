@@ -8,6 +8,7 @@ class AppTheme {
   static const Color mutedPurple = Color.fromARGB(255, 143, 143, 186);
   static const Color stoneGray = Color(0xFF7A7A8C);
   static const Color boneWhite = Color.fromARGB(255, 206, 206, 208);
+  static const Color driedBlood = Color.fromARGB(143, 111, 10, 3);
 
   //dark theme
   static ThemeData darkTheme = ThemeData(

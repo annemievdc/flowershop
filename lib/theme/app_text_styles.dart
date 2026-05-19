@@ -25,7 +25,7 @@ class AppTextStyles {
   static TextStyle body(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 29,
+      fontSize: 28,
       color: AppTheme.boneWhite,
     );
   }
@@ -33,7 +33,7 @@ class AppTextStyles {
   static TextStyle italic(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 16,
+      fontSize: 22,
       fontStyle: FontStyle.italic,
       color: AppTheme.boneWhite,
     );
@@ -43,18 +43,16 @@ class AppTextStyles {
   static TextStyle cardtitle(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 24,
+      fontSize: 18,
       fontWeight: FontWeight.bold,
       color: AppTheme.boneWhite,
-      letterSpacing: 0.8,
     );
   }
 
   static TextStyle cardsubtitle(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-
-      fontSize: 22,
+      fontSize: 17,
       fontStyle: FontStyle.italic,
       color: AppTheme.boneWhite,
     );
@@ -63,7 +61,7 @@ class AppTextStyles {
   static TextStyle cardbodybold(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: FontWeight.bold,
       color: AppTheme.boneWhite,
     );
@@ -72,7 +70,7 @@ class AppTextStyles {
   static TextStyle cardbody(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: FontWeight.normal,
       color: AppTheme.boneWhite,
     );
