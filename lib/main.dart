@@ -9,6 +9,7 @@ import 'package:flowershop/views/info_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flowershop/views/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +37,7 @@ class FlowerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 100,
@@ -53,6 +54,7 @@ class FlowerApp extends StatelessWidget {
           labelColor: AppTheme.boneWhite,
           unselectedLabelColor: AppTheme.mutedPurple,
           tabs: [
+            Tab(icon: Icon(FontAwesomeIcons.house), text: "Home"),
             Tab(icon: Icon(FontAwesomeIcons.fan), text: "Bloemen"),
             Tab(icon: Icon(FontAwesomeIcons.featherPointed), text: "Boodschap"),
             Tab(icon: Icon(FontAwesomeIcons.basketShopping), text: "Mand"),
@@ -62,6 +64,7 @@ class FlowerApp extends StatelessWidget {
 
         body: TabBarView(
           children: [
+            HomePage(),
             FlowerPage(cartViewModel: cartViewModel),
             MessagePage(cartViewModel: cartViewModel),
             CartPage(cartViewModel: cartViewModel),

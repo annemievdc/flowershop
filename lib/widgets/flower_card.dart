@@ -33,15 +33,13 @@ class FlowerCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
           side: BorderSide(
-            color: isSelected
-                ? AppTheme.mutedPurple
-                : AppTheme.mutedPurple.withOpacity(0.25),
+            color: isSelected ? AppTheme.mutedPurple : AppTheme.darkSlate,
             width: isSelected ? 1.4 : 0.7,
           ),
         ),
 
         color: AppTheme.darkSlate,
-        elevation: isSelected ? 12 : 7,
+        elevation: isSelected ? 6 : 1,
         shadowColor: AppTheme.mutedPurple,
         clipBehavior: Clip
             .antiAlias, //image blijft netjes binnen de card,geen overhangende hoeken

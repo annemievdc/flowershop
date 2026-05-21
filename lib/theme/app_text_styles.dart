@@ -9,7 +9,7 @@ class AppTextStyles {
       fontWeight: FontWeight.bold,
       fontSize: MediaQuery.of(context).size.width * 0.06,
       color: AppTheme.boneWhite,
-      letterSpacing: 2.5,
+      letterSpacing: 3,
     );
   }
 
@@ -18,6 +18,7 @@ class AppTextStyles {
       fontFamily: 'Cinzel',
       fontSize: MediaQuery.of(context).size.width * 0.04,
       color: AppTheme.boneWhite,
+      letterSpacing: 1.5,
     );
   }
 
@@ -25,7 +26,7 @@ class AppTextStyles {
   static TextStyle body(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 28,
+      fontSize: 20,
       color: AppTheme.boneWhite,
     );
   }
@@ -33,7 +34,7 @@ class AppTextStyles {
   static TextStyle italic(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 22,
+      fontSize: 18,
       fontStyle: FontStyle.italic,
       color: AppTheme.boneWhite,
     );
@@ -43,7 +44,7 @@ class AppTextStyles {
   static TextStyle cardtitle(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 18,
+      fontSize: 20,
       fontWeight: FontWeight.bold,
       color: AppTheme.boneWhite,
     );
@@ -52,7 +53,7 @@ class AppTextStyles {
   static TextStyle cardsubtitle(BuildContext context) {
     return TextStyle(
       fontFamily: 'Cormorant',
-      fontSize: 17,
+      fontSize: 16,
       fontStyle: FontStyle.italic,
       color: AppTheme.boneWhite,
     );
@@ -71,6 +72,24 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: 'Cormorant',
       fontSize: 16,
+      fontWeight: FontWeight.normal,
+      color: AppTheme.boneWhite,
+    );
+  }
+
+  static TextStyle cardbodyboldsmall(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cormorant',
+      fontSize: 13,
+      fontWeight: FontWeight.bold,
+      color: AppTheme.boneWhite,
+    );
+  }
+
+  static TextStyle cardbodysmall(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cormorant',
+      fontSize: 13,
       fontWeight: FontWeight.normal,
       color: AppTheme.boneWhite,
     );

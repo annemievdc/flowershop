@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flowershop/models/message.dart';
 import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
@@ -28,14 +30,12 @@ class MessageCard extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
             side: BorderSide(
-              color: isSelected
-                  ? AppTheme.mutedPurple
-                  : AppTheme.mutedPurple.withOpacity(0.25),
+              color: isSelected ? AppTheme.mutedPurple : AppTheme.darkSlate,
               width: isSelected ? 1.4 : 0.7,
             ),
           ),
-          color: isSelected ? AppTheme.stoneGray : AppTheme.darkSlate,
-          elevation: 10,
+
+          elevation: isSelected ? 6 : 1,
           shadowColor: AppTheme.mutedPurple,
 
           child: Padding(

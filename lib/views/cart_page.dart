@@ -2,6 +2,7 @@ import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
 import 'package:flowershop/viewmodels/cart_view_model.dart';
 import 'package:flowershop/widgets/cartitem_card.dart';
+import 'package:flowershop/widgets/page_title.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -20,14 +21,7 @@ class CartPage extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                const SizedBox(height: 20),
-
-                Text(
-                  'Jou duistere selectie',
-                  style: AppTextStyles.subtitle(context),
-                ),
-
-                const SizedBox(height: 20),
+                PageTitleBox(title: "Uw duistere selectie"),
 
                 Expanded(
                   child: cartViewModel.cart.isEmpty

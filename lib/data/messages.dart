@@ -3,11 +3,16 @@ import 'package:flowershop/models/message.dart';
 final List<Message> messages = [
   Message(
     '1',
-    'Beschouw dit als een zorgvuldig gecureerde afwijking van mijn gebruikelijke onverschilligheid',
-    '',
+    'Ik was van plan me te gedragen, maar er waren zoveel andere mogelijkheden.',
+    'Wednesday Addams',
   ),
+
   Message('2', 'Omdat een schedel sociaal onaanvaardbaar was', ''),
-  Message('3', 'Ik bied zelden troost. Hier is een acceptabel alternatief', ''),
+  Message(
+    '3',
+    'Ik hoop dat je ooit de onbeschrijflijke vreugde zult ervaren van het hebben van kinderen, en van het betalen van iemand anders om ze op te voeden.',
+    'Gomez Addams',
+  ),
   Message(
     '4',
     'Deze dag wordt op een wel heel bijzondere manier ontwrichtend.',
@@ -43,12 +48,12 @@ final List<Message> messages = [
   ),
   Message(
     '13',
-    'Ik hoop dat je ooit de onbeschrijflijke vreugde zult ervaren van het hebben van kinderen, en van het betalen van iemand anders om ze op te voeden.',
-    'Gomez Addams',
+    'Ik bied zelden troost. Hier is een acceptabel alternatief',
+    '',
   ),
   Message(
     '14',
-    'Ik was van plan me te gedragen, maar er waren zoveel andere mogelijkheden.',
-    'Wednesday Addams',
+    'Beschouw dit als een zorgvuldig gecureerde afwijking van mijn gebruikelijke onverschilligheid',
+    '',
   ),
 ];

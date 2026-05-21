@@ -1,9 +1,8 @@
 import 'package:flowershop/models/flower.dart';
 import 'package:flowershop/theme/app_theme.dart';
 import 'package:flowershop/viewmodels/cart_view_model.dart';
+import 'package:flowershop/widgets/page_title.dart';
 import 'package:flutter/material.dart';
-
-import '../theme/app_text_styles.dart';
 import '../widgets/flower_card.dart';
 
 import 'package:flowershop/services/flower_firestore_service.dart';
@@ -64,16 +63,7 @@ class _FlowerPageState extends State<FlowerPage> {
 
           return Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Center(
-                  child: Text(
-                    'Stel je boeket samen...',
-                    style: AppTextStyles.subtitle(context),
-                    maxLines: 1,
-                  ),
-                ),
-              ),
+              PageTitleBox(title: "Maak een selectie"),
               Expanded(
                 child: GridView.builder(
                   itemCount: flowers.length,
