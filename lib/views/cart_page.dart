@@ -1,6 +1,7 @@
 import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
 import 'package:flowershop/viewmodels/cart_view_model.dart';
+import 'package:flowershop/views/payment_page.dart';
 import 'package:flowershop/widgets/cartitem_card.dart';
 import 'package:flowershop/widgets/page_title.dart';
 import 'package:flutter/material.dart';
@@ -60,29 +61,7 @@ class CartPage extends StatelessWidget {
                           },
                         ),
                 ),
-
-                Card(
-                  color: AppTheme.darkSlate,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(18),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Totaal', style: AppTextStyles.cardtitle(context)),
-                        Text(
-                          '${cartViewModel.cartTotalPrice.toStringAsFixed(2)} €',
-                          style: AppTextStyles.cardtitle(context),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-
+                const SizedBox(height: 20),
                 Card(
                   color: AppTheme.darkSlate,
                   shape: RoundedRectangleBorder(
@@ -112,8 +91,55 @@ class CartPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 20),
+                Card(
+                  color: AppTheme.darkSlate,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Totaal', style: AppTextStyles.cardtitle(context)),
+                        Text(
+                          '${cartViewModel.cartTotalPrice.toStringAsFixed(2)} €',
+                          style: AppTextStyles.cardtitle(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  height: 60,
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              PaymentPage(cartViewModel: cartViewModel),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: BeveledRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      backgroundColor: AppTheme.darkSlate,
+                      foregroundColor: AppTheme.boneWhite,
+                      alignment: Alignment.center,
+                    ),
+                    icon: Icon(FontAwesomeIcons.creditCard, size: 20),
+                    label: Text(
+                      'Verder naar betaling',
+                      style: AppTextStyles.cardtitle(context),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

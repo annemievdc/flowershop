@@ -42,7 +42,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
       margin: const EdgeInsets.all(6),
       padding: const EdgeInsets.all(12),
       child: Card(
-        color: AppTheme.darkSlate.withOpacity(0.2),
+        color: AppTheme.darkSlate,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: Padding(
           padding: const EdgeInsets.all(16),

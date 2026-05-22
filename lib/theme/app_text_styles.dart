@@ -94,4 +94,21 @@ class AppTextStyles {
       color: AppTheme.boneWhite,
     );
   }
+
+  static TextStyle inputLabel(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cormorant',
+      fontSize: 18,
+      color: AppTheme.boneWhite,
+    );
+  }
+
+  static TextStyle inputHint(BuildContext context) {
+    return TextStyle(
+      fontFamily: 'Cormorant',
+      fontSize: 18,
+      fontStyle: FontStyle.italic,
+      color: AppTheme.boneWhite,
+    );
+  }
 }
