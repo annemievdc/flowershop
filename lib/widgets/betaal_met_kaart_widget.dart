@@ -113,7 +113,7 @@ void betaalMetKaartDialog(BuildContext context) {
               Navigator.pop(context);
               betaalSucces(context);
             },
-            child: Text("Bevestigen"),
+            child: Text("Bevestigen", style: AppTextStyles.cardbody(context)),
           ),
         ],
       );

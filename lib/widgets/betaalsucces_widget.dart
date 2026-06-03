@@ -65,7 +65,7 @@ void betaalSucces(BuildContext context) {
                 (route) => false,
               );
             },
-            child: const Text("Sluiten"),
+            child: Text("Sluiten", style: AppTextStyles.cardbody(context)),
           ),
         ],
       );

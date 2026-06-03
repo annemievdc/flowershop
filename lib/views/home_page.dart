@@ -63,38 +63,43 @@ class _HomePageState extends State<HomePage> {
 
         Expanded(
           flex: 5,
-          child: GestureDetector(
-            onTap: toonKnoppen,
-            child: Stack(
-              alignment: Alignment.center,
+          child: MouseRegion(
+            onEnter: (_) => setState(() => isVisible = true),
+            onExit: (_) => setState(() => isVisible = false),
 
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  child: AspectRatio(
-                    aspectRatio: 640 / 320,
-                    child: VideoPlayer(videoController),
-                  ),
-                ),
-                if (isVisible)
-                  IconButton(
-                    iconSize: 80,
-                    color: AppTheme.boneWhite,
-                    icon: Icon(
-                      videoController.value.isPlaying
-                          ? Icons.pause
-                          : Icons.play_arrow,
+            child: GestureDetector(
+              onTap: toonKnoppen,
+              child: Stack(
+                alignment: Alignment.center,
+
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.center,
+                    child: AspectRatio(
+                      aspectRatio: 640 / 320,
+                      child: VideoPlayer(videoController),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        videoController.value.isPlaying
-                            ? videoController.pause()
-                            : videoController.play();
-                      });
-                      toonKnoppen();
-                    },
                   ),
-              ],
+                  if (isVisible)
+                    IconButton(
+                      iconSize: 80,
+                      color: AppTheme.boneWhite,
+                      icon: Icon(
+                        videoController.value.isPlaying
+                            ? Icons.pause
+                            : Icons.play_arrow,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          videoController.value.isPlaying
+                              ? videoController.pause()
+                              : videoController.play();
+                        });
+                        toonKnoppen();
+                      },
+                    ),
+                ],
+              ),
             ),
           ),
         ),

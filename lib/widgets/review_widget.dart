@@ -42,7 +42,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
       margin: const EdgeInsets.all(6),
       padding: const EdgeInsets.all(12),
       child: Card(
-        color: AppTheme.darkSlate,
+        color: AppTheme.richBlack,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -58,7 +58,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                     child: Icon(
                       Icons.favorite,
                       color: AppTheme.driedBlood,
-                      size: 16,
+                      size: 20,
                     ),
                   ),
                 ),
@@ -68,7 +68,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
 
               Text(
                 '"${review.content}"',
-                style: AppTextStyles.cardbodysmall(context),
+                style: AppTextStyles.cardbody(context),
                 textAlign: TextAlign.center,
               ),
 
@@ -76,7 +76,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
 
               Text(
                 "- ${review.displayAuthor}",
-                style: AppTextStyles.cardbodyboldsmall(context),
+                style: AppTextStyles.cardbodybold(context),
                 textAlign: TextAlign.center,
               ),
             ],
