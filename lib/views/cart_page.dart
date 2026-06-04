@@ -1,7 +1,8 @@
 import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
 import 'package:flowershop/viewmodels/cart_view_model.dart';
-import 'package:flowershop/views/payment_page.dart';
+
+import 'package:flowershop/widgets/app_button.dart';
 import 'package:flowershop/widgets/cartitem_card.dart';
 import 'package:flowershop/widgets/page_title.dart';
 import 'package:flutter/material.dart';
@@ -14,137 +15,139 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: cartViewModel,
-      builder: (context, child) {
-        return Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                PageTitleBox(title: "Uw duistere selectie"),
-
-                Expanded(
-                  child: cartViewModel.cart.isEmpty
-                      ? Center(
-                          child: Text(
-                            'Nog geen botanische offers gekozen...',
-                            style: AppTextStyles.body(context),
+    return Scaffold(
+      body: SafeArea(
+        child: AnimatedBuilder(
+          animation: cartViewModel,
+          builder: (context, child) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.all(12),
+              child: Column(
+                children: [
+                  PageTitleBox(title: "Uw duistere selectie"),
+                  const SizedBox(height: 12),
+                  cartViewModel.cart.isEmpty
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 40.0),
+                          child: Center(
+                            child: Text(
+                              'Nog geen botanische offers gekozen...',
+                              style: AppTextStyles.body(context),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         )
-                      : ListView.builder(
-                          itemCount: cartViewModel.cart.length,
-                          itemBuilder: (context, index) {
-                            final item = cartViewModel.cart[index];
-                            return Dismissible(
-                              key: Key(item.flower.id),
-                              direction: DismissDirection.endToStart,
-                              background: Container(
-                                margin: EdgeInsets.symmetric(vertical: 6),
-                                padding: EdgeInsets.only(right: 20),
-                                alignment: Alignment.centerRight,
-                                decoration: BoxDecoration(
-                                  color: const Color.fromARGB(143, 110, 14, 8),
-                                  borderRadius: BorderRadius.circular(16),
+                      : Column(
+                          children: [
+                            ...cartViewModel.cart.map((item) {
+                              return Dismissible(
+                                key: Key(item.flower.id),
+                                direction: DismissDirection.endToStart,
+                                background: Container(
+                                  margin: const EdgeInsets.symmetric(
+                                    vertical: 6,
+                                  ),
+                                  padding: const EdgeInsets.only(right: 12),
+                                  alignment: Alignment.centerRight,
+                                  decoration: BoxDecoration(
+                                    color: const Color.fromARGB(
+                                      143,
+                                      110,
+                                      14,
+                                      8,
+                                    ),
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: const Icon(
+                                    FontAwesomeIcons.trash,
+                                    size: 16,
+                                    color: AppTheme.boneWhite,
+                                  ),
                                 ),
-                                child: Icon(
-                                  FontAwesomeIcons.trash,
-                                  size: 16,
-                                  color: AppTheme.boneWhite,
-                                ),
-                              ),
-                              onDismissed: (_) {
-                                cartViewModel.removeEntireItem(item.flower.id);
-                              },
-                              child: CartItemCard(item: item),
-                            );
-                          },
+                                onDismissed: (_) {
+                                  cartViewModel.removeEntireItem(
+                                    item.flower.id,
+                                  );
+                                },
+                                child: CartItemCard(item: item),
+                              );
+                            }),
+                          ],
                         ),
-                ),
-                const SizedBox(height: 20),
-                Card(
-                  color: AppTheme.darkSlate,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(18),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          FontAwesomeIcons.featherPointed,
-                          color: AppTheme.mutedPurple,
-                          size: 20,
-                        ),
-
-                        const SizedBox(width: 14),
-
-                        Expanded(
-                          child: Text(
-                            cartViewModel.selectedMessage?.messagecontent ??
-                                "Geen boodschap geselecteerd, kilte is ook een keuze... ",
-                            style: AppTextStyles.cardsubtitle(context),
+                  const SizedBox(height: 20),
+                  Card(
+                    color: AppTheme.darkSlate,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(
+                            FontAwesomeIcons.featherPointed,
+                            color: AppTheme.mutedPurple,
+                            size: 20,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Card(
-                  color: AppTheme.darkSlate,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(18),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Totaal', style: AppTextStyles.cardtitle(context)),
-                        Text(
-                          '${cartViewModel.cartTotalPrice.toStringAsFixed(2)} €',
-                          style: AppTextStyles.cardtitle(context),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  width: double.infinity,
-                  height: 60,
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              PaymentPage(cartViewModel: cartViewModel),
-                        ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+
+                          const SizedBox(width: 14),
+
+                          Expanded(
+                            child: Text(
+                              cartViewModel.selectedMessage?.messagecontent ??
+                                  "Geen boodschap geselecteerd, kilte is ook een keuze... ",
+                              style: AppTextStyles.cardsubtitle(context),
+                            ),
+                          ),
+                        ],
                       ),
-                      backgroundColor: AppTheme.darkSlate,
-                      foregroundColor: AppTheme.boneWhite,
-                      alignment: Alignment.center,
-                    ),
-                    icon: Icon(FontAwesomeIcons.creditCard, size: 20),
-                    label: Text(
-                      'Verder naar betaling',
-                      style: AppTextStyles.cardtitle(context),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+                  const SizedBox(height: 20),
+                  Card(
+                    color: AppTheme.darkSlate,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Totaal',
+                            style: AppTextStyles.cardtitle(context),
+                          ),
+                          const Spacer(),
+                          Text(
+                            '${cartViewModel.cartTotalPrice.toStringAsFixed(2)} €',
+                            style: AppTextStyles.cardtitle(context),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  if (cartViewModel.cart.isNotEmpty) ...[
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      width: double.infinity,
+
+                      child: AppButton(
+                        onPressed: () {
+                          DefaultTabController.of(context).animateTo(4);
+                        },
+
+                        text: 'Verder naar betaling',
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

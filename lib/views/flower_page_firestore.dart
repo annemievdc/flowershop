@@ -1,4 +1,5 @@
 import 'package:flowershop/models/flower.dart';
+import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
 import 'package:flowershop/viewmodels/cart_view_model.dart';
 import 'package:flowershop/widgets/page_title.dart';
@@ -20,6 +21,7 @@ class _FlowerPageState extends State<FlowerPage> {
   final FlowerFirestoreService flowerService =
       FlowerFirestoreService(); //ipv the api,gebruik firebase
   late Future<List<Flower>> flowersFuture;
+  bool showCutflowers = false;
 
   @override
   void initState() {
@@ -31,72 +33,98 @@ class _FlowerPageState extends State<FlowerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: flowersFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: Stack(
-                children: [
-                  SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 6,
-                      color: AppTheme.mutedPurple,
-                      backgroundColor: AppTheme.darkSlate,
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: FutureBuilder(
+          future: flowersFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 6,
+                        color: AppTheme.mutedPurple,
+                        backgroundColor: AppTheme.darkSlate,
+                      ),
                     ),
-                  ),
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundColor: AppTheme.darkSlate,
-                    backgroundImage: AssetImage('assets/images/skull.png'),
-                  ),
-                ],
-              ),
-            );
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-          final flowers = snapshot.data ?? [];
-
-          return Column(
-            children: [
-              PageTitleBox(title: "Maak een selectie"),
-              Expanded(
-                child: GridView.builder(
-                  itemCount: flowers.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, //2 per rij
-                    crossAxisSpacing: 12, //tussen de kaarten
-                    mainAxisSpacing: 12, //tussen de rijen
-                    childAspectRatio:
-                        0.50, //width : height , hoe kleiner hoe langer de kaart
-                  ),
-                  itemBuilder: (context, index) {
-                    final flower = flowers[index];
-
-                    return FlowerCard(
-                      flower: flower,
-                      quantity: widget.cartViewModel.quantityFor(flower),
-                      onAdd: () {
-                        setState(() {
-                          widget.cartViewModel.addFlower(flower);
-                        });
-                      },
-                      onRemove: () {
-                        setState(() {
-                          widget.cartViewModel.removeFlower(flower);
-                        });
-                      },
-                    );
-                  },
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundColor: AppTheme.darkSlate,
+                      backgroundImage: AssetImage('assets/images/skull.png'),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          );
-        },
+              );
+            }
+            if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            }
+            final flowers = snapshot.data ?? [];
+
+            //filter de snijbloemen
+            final visibleFlowers = showCutflowers
+                ? flowers.where((flower) => flower.cutflower == true).toList()
+                : flowers;
+
+            return Column(
+              children: [
+                PageTitleBox(title: "Maak een selectie"),
+
+                Row(
+                  children: [
+                    Text(
+                      "Toon enkel de snijbloemen",
+                      style: AppTextStyles.cardbody(context),
+                    ),
+                    Spacer(),
+                    Switch(
+                      value: showCutflowers,
+                      onChanged: (value) {
+                        setState(() {
+                          showCutflowers = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: GridView.builder(
+                    itemCount: visibleFlowers.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, //2 per rij
+                      crossAxisSpacing: 12, //tussen de kaarten
+                      mainAxisSpacing: 12, //tussen de rijen
+                      childAspectRatio:
+                          0.50, //width : height , hoe kleiner hoe langer de kaart
+                    ),
+                    itemBuilder: (context, index) {
+                      final flower = visibleFlowers[index];
+
+                      return FlowerCard(
+                        flower: flower,
+                        quantity: widget.cartViewModel.quantityFor(flower),
+                        onAdd: () {
+                          setState(() {
+                            widget.cartViewModel.addFlower(flower);
+                          });
+                        },
+                        onRemove: () {
+                          setState(() {
+                            widget.cartViewModel.removeFlower(flower);
+                          });
+                        },
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

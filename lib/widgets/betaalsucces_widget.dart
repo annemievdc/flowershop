@@ -1,6 +1,7 @@
 import 'package:flowershop/main.dart';
 import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
+import 'package:flowershop/widgets/app_button.dart';
 
 import 'package:flutter/material.dart';
 
@@ -27,35 +28,28 @@ void betaalSucces(BuildContext context) {
               height: 130,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(60),
-                color: AppTheme.stoneGray,
+                color: AppTheme.richBlack,
               ),
 
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(60),
                 child: Image.asset(
                   'assets/images/addamscar.png',
-                  height: 120,
+
                   fit: BoxFit.contain,
                 ),
               ),
             ),
             SizedBox(height: 20),
             Text(
-              "Lurch is onderweg met uw bestelling...",
+              "'Lurch\' is onderweg...",
               style: AppTextStyles.cardtitle(context),
             ),
           ],
         ),
 
         actions: [
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppTheme.driedBlood,
-              foregroundColor: AppTheme.boneWhite,
-              shape: BeveledRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
+          AppButton(
             onPressed: () {
               Navigator.pop(context); // sluit dialog
 
@@ -65,7 +59,7 @@ void betaalSucces(BuildContext context) {
                 (route) => false,
               );
             },
-            child: Text("Sluiten", style: AppTextStyles.cardbody(context)),
+            text: 'Sluiten',
           ),
         ],
       );

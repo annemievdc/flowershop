@@ -68,7 +68,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
 
               Text(
                 '"${review.content}"',
-                style: AppTextStyles.cardbody(context),
+                style: AppTextStyles.body(context),
                 textAlign: TextAlign.center,
               ),
 
@@ -76,7 +76,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
 
               Text(
                 "- ${review.displayAuthor}",
-                style: AppTextStyles.cardbodybold(context),
+                style: AppTextStyles.body(context),
                 textAlign: TextAlign.center,
               ),
             ],

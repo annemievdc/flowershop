@@ -7,6 +7,7 @@ class Flower {
   final bool toxic;
   final String color;
   final int stockQuantity;
+  final bool cutflower;
 
   Flower({
     required this.id,
@@ -17,6 +18,7 @@ class Flower {
     required this.toxic,
     required this.color,
     required this.stockQuantity,
+    required this.cutflower,
   });
 
   factory Flower.fromFirestore(String id, Map<String, dynamic> data) {
@@ -29,6 +31,7 @@ class Flower {
       toxic: data['toxic'] ?? false,
       color: data['color'] ?? '',
       stockQuantity: data['stockQuantity'] ?? 0,
+      cutflower: data['cutflower'] ?? false,
     );
   }
 }

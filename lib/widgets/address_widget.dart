@@ -3,7 +3,24 @@ import 'package:flutter/material.dart';
 
 class AddressWidget extends StatelessWidget {
   final GlobalKey<FormState> formKey;
-  const AddressWidget({super.key, required this.formKey});
+
+  final TextEditingController voornaamController;
+  final TextEditingController naamController;
+  final TextEditingController straatController;
+  final TextEditingController huisnummerController;
+  final TextEditingController postcodeController;
+  final TextEditingController stadController;
+
+  const AddressWidget({
+    super.key,
+    required this.formKey,
+    required this.voornaamController,
+    required this.naamController,
+    required this.straatController,
+    required this.huisnummerController,
+    required this.postcodeController,
+    required this.stadController,
+  });
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -14,6 +31,7 @@ class AddressWidget extends StatelessWidget {
             Text("Verzending", style: AppTextStyles.body(context)),
 
             TextFormField(
+              controller: voornaamController,
               style: AppTextStyles.cardbody(context),
               decoration: InputDecoration(
                 labelText: "Voornaam",
@@ -28,6 +46,7 @@ class AddressWidget extends StatelessWidget {
             ),
 
             TextFormField(
+              controller: naamController,
               style: AppTextStyles.cardbody(context),
               decoration: InputDecoration(
                 labelText: "Naam",
@@ -45,6 +64,7 @@ class AddressWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
+                    controller: straatController,
                     style: AppTextStyles.cardbody(context),
                     decoration: InputDecoration(
                       labelText: "Straat",
@@ -61,6 +81,7 @@ class AddressWidget extends StatelessWidget {
                 SizedBox(width: 12),
                 Expanded(
                   child: TextFormField(
+                    controller: huisnummerController,
                     style: AppTextStyles.cardbody(context),
                     decoration: InputDecoration(
                       labelText: "Huisnummer",
@@ -81,6 +102,7 @@ class AddressWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
+                    controller: postcodeController,
                     style: AppTextStyles.cardbody(context),
                     decoration: InputDecoration(
                       labelText: "Postcode",
@@ -108,6 +130,7 @@ class AddressWidget extends StatelessWidget {
                 SizedBox(width: 12),
                 Expanded(
                   child: TextFormField(
+                    controller: stadController,
                     style: AppTextStyles.cardbody(context),
                     decoration: InputDecoration(
                       labelText: "Stad",

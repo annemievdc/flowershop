@@ -15,12 +15,12 @@ final List<Review> reviews = [
   Review(
     id: '3',
     content:
-        "De rozen werden, zoals gevraagd, al zonder de bloemenblaadjes geleverd,Geweldige service ! ",
+        "De rozen werden al zonder de bloemenblaadjes geleverd,Geweldige service ! ",
     author: 'Morticia',
   ),
   Review(
     id: '4',
     content:
-        "Ik bestelde een rouwboeket voor mijn ex, hij heeft de boodschap begrepen... .",
+        "De rozen waren zo dramatisch dat zelfs mijn spiegelbeeld even wegkeek.",
   ),
 ];

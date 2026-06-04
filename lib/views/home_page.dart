@@ -35,76 +35,81 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     if (!videoController.value.isInitialized) {
-      return const Center(
-        child: Stack(
-          children: [
-            SizedBox(
-              width: 100,
-              height: 100,
-              child: CircularProgressIndicator(
-                strokeWidth: 6,
-                color: AppTheme.mutedPurple,
-                backgroundColor: AppTheme.darkSlate,
+      return Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: const Center(
+          child: Stack(
+            children: [
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: CircularProgressIndicator(
+                  strokeWidth: 6,
+                  color: AppTheme.mutedPurple,
+                  backgroundColor: AppTheme.darkSlate,
+                ),
               ),
-            ),
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: AppTheme.darkSlate,
-              backgroundImage: AssetImage('assets/images/skull.png'),
-            ),
-          ],
+              CircleAvatar(
+                radius: 50,
+                backgroundColor: AppTheme.darkSlate,
+                backgroundImage: AssetImage('assets/images/skull.png'),
+              ),
+            ],
+          ),
         ),
       );
     }
 
-    return Column(
-      children: [
-        PageTitleBox(title: "Welkom duister ziel"),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            PageTitleBox(title: "Welkom duister ziel"),
 
-        Expanded(
-          flex: 5,
-          child: MouseRegion(
-            onEnter: (_) => setState(() => isVisible = true),
-            onExit: (_) => setState(() => isVisible = false),
+            MouseRegion(
+              onEnter: (_) => setState(() => isVisible = true),
+              onExit: (_) => setState(() => isVisible = false),
 
-            child: GestureDetector(
-              onTap: toonKnoppen,
-              child: Stack(
-                alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: toonKnoppen,
+                child: Stack(
+                  alignment: Alignment.center,
 
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.center,
-                    child: AspectRatio(
-                      aspectRatio: 640 / 320,
-                      child: VideoPlayer(videoController),
-                    ),
-                  ),
-                  if (isVisible)
-                    IconButton(
-                      iconSize: 80,
-                      color: AppTheme.boneWhite,
-                      icon: Icon(
-                        videoController.value.isPlaying
-                            ? Icons.pause
-                            : Icons.play_arrow,
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.center,
+                      child: AspectRatio(
+                        aspectRatio: 640 / 320,
+                        child: VideoPlayer(videoController),
                       ),
-                      onPressed: () {
-                        setState(() {
-                          videoController.value.isPlaying
-                              ? videoController.pause()
-                              : videoController.play();
-                        });
-                        toonKnoppen();
-                      },
                     ),
-                ],
+                    if (isVisible)
+                      IconButton(
+                        iconSize: 80,
+                        color: AppTheme.boneWhite,
+                        icon: Icon(
+                          videoController.value.isPlaying
+                              ? Icons.pause
+                              : Icons.play_arrow,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            videoController.value.isPlaying
+                                ? videoController.pause()
+                                : videoController.play();
+                          });
+                          toonKnoppen();
+                        },
+                      ),
+                  ],
+                ),
               ),
             ),
-          ),
+            ReviewWidget(),
+          ],
         ),
-        Expanded(flex: 2, child: ReviewWidget()),
-      ],
+      ),
     );
   }
 

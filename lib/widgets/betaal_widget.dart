@@ -1,5 +1,6 @@
 import 'package:flowershop/theme/app_text_styles.dart';
-import 'package:flowershop/theme/app_theme.dart';
+
+import 'package:flowershop/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 
 class BetaalWidget extends StatelessWidget {
@@ -24,11 +25,7 @@ class BetaalWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            "Totaal : ${totalPrice.toStringAsFixed(2)} €",
-            style: AppTextStyles.body(context),
-          ),
-
+          SizedBox(height: 16),
           DropdownButtonFormField<String>(
             items: opties,
             style: AppTextStyles.body(context),
@@ -39,20 +36,10 @@ class BetaalWidget extends StatelessWidget {
             ),
             onChanged: onBetaalWijzeChanged,
           ),
-
+          SizedBox(height: 16),
           SizedBox(
             width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.darkSlate,
-                foregroundColor: AppTheme.boneWhite,
-                shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              onPressed: onPayPressed,
-              child: Text("Betalen", style: AppTextStyles.body(context)),
-            ),
+            child: AppButton(onPressed: onPayPressed, text: "Betalen"),
           ),
         ],
       ),

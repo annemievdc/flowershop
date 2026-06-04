@@ -28,40 +28,37 @@ class _MessagePageState extends State<MessagePage> {
           children: [
             PageTitleBox(title: "Uw laatste woorden,...?"),
 
-            Row(
-              children: [
-                Container(
-                  height: 120,
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Container(
                   padding: EdgeInsets.all(3),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(color: AppTheme.mutedPurple, width: 1.5),
                   ),
                   child: CircleAvatar(
-                    radius: 38,
+                    radius: 100,
                     backgroundColor: AppTheme.darkSlate,
                     backgroundImage: AssetImage('assets/images/thing.jpg'),
                   ),
                 ),
-                SizedBox(width: 6),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        ' \'Thing\' voegt de gekozen boodschap toe...',
-                        style: AppTextStyles.cardsubtitle(context),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 3),
-              ],
+              ),
             ),
 
             Expanded(
+              flex: 1,
+              child: Center(
+                child: Text(
+                  ' \'Thing\' voegt de gekozen boodschap toe...',
+                  style: AppTextStyles.cardtitle(context),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
               child: ListView.builder(
                 itemCount: messages.length,
                 itemBuilder: (context, index) {

@@ -47,7 +47,7 @@ class FlowerCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
-              flex: 5,
+              flex: 4,
               child: Stack(
                 children: [
                   Positioned.fill(child: flowerImage(flower.imageUrl)),
@@ -61,7 +61,7 @@ class FlowerCard extends StatelessWidget {
                           color: AppTheme.charcoal,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(FontAwesomeIcons.skull, size: 12),
+                        child: Icon(FontAwesomeIcons.skull, size: 18),
                       ),
                     ),
                 ],

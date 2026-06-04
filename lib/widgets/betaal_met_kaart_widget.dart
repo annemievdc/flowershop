@@ -1,5 +1,6 @@
 import 'package:flowershop/theme/app_text_styles.dart';
 import 'package:flowershop/theme/app_theme.dart';
+import 'package:flowershop/widgets/app_button.dart';
 import 'package:flowershop/widgets/betaalsucces_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -87,25 +88,8 @@ void betaalMetKaartDialog(BuildContext context) {
           ),
         ),
         actions: [
-          TextButton(
-            style: TextButton.styleFrom(
-              backgroundColor: AppTheme.darkSlate,
-              foregroundColor: AppTheme.boneWhite,
-              shape: BeveledRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            onPressed: () => Navigator.pop(context),
-            child: Text("Annuleren"),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppTheme.driedBlood,
-              foregroundColor: AppTheme.boneWhite,
-              shape: BeveledRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
+          AppButton(onPressed: () => Navigator.pop(context), text: 'Annuleren'),
+          AppButton(
             onPressed: () {
               if (!kaartFormKey.currentState!.validate()) {
                 return;
@@ -113,7 +97,7 @@ void betaalMetKaartDialog(BuildContext context) {
               Navigator.pop(context);
               betaalSucces(context);
             },
-            child: Text("Bevestigen", style: AppTextStyles.cardbody(context)),
+            text: "Bevestigen",
           ),
         ],
       );

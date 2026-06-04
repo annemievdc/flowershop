@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flowershop/theme/app_theme.dart';
-import 'package:flowershop/widgets/mailDialoog.dart';
+import 'package:flowershop/widgets/mail_dialoog.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -75,7 +75,7 @@ class _DoorbellWidgetState extends State<DoorbellWidget>
     await audioPlayer.onPlayerComplete.first;
     await audioPlayer.play(AssetSource('audio/lurch.mp3'));
 
-    await Future.delayed(const Duration(milliseconds: 750));
+    await Future.delayed(Duration(milliseconds: 750));
     animatieController.reset();
 
     setState(() {
@@ -84,7 +84,7 @@ class _DoorbellWidgetState extends State<DoorbellWidget>
 
     String? emailBezoeker = await showDialog<String>(
       context: context,
-      builder: (BuildContext context) => const MailDialoog(),
+      builder: (BuildContext context) => MailDialoog(),
     );
 
     if (emailBezoeker != null && emailBezoeker.isNotEmpty) {

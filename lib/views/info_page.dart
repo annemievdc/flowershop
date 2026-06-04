@@ -19,7 +19,7 @@ class InfoPage extends StatelessWidget {
           const SizedBox(height: 10),
           Center(
             child: Text(
-              'Deze webshop is geen vrolijk digitaal platform; het is een zorgvuldig gecultiveerd mortuarium van botanische rariteiten. Tot leven gewekt als een verplichte, pijnlijke opdracht voor het vak Programming for Cloud aan de Thomas More Hogeschool. De heer Versweyveld eiste een functionele applicatie. Ik besloot hem te voorzien van een esthetiek die zijn bloed doet bevriezen. Hier worden geen bloemen verkocht om kamers op te vrolijken, maar louter flora voor het oproepen van geesten, het versturen van passief-agressieve dreigementen, of het op afstand houden van irritante, levende wezens.',
+              'Deze webshop is geen vrolijk digitaal platform; het is een zorgvuldig gecultiveerd kabinet van botanische rariteiten. Tot leven gewekt als een verplichte, pijnlijke opdracht voor het vak Programming for Cloud aan de Thomas More Hogeschool. \n\n De heer Versweyveld eiste een functionele applicatie. Ik besloot de app te voorzien van een esthetiek die zijn bloed doet bevriezen.\n\n Hier worden geen bloemen verkocht om kamers op te vrolijken, maar flora voor het oproepen van geesten, het versturen van passief-agressieve dreigementen, of het op afstand houden van irritante, levende wezens.',
               style: AppTextStyles.body(context),
               textAlign: TextAlign.center,
             ),
