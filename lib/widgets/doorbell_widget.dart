@@ -86,25 +86,31 @@ class _DoorbellWidgetState extends State<DoorbellWidget>
       context: context,
       builder: (BuildContext context) => MailDialoog(),
     );
-
     if (emailBezoeker != null && emailBezoeker.isNotEmpty) {
-      final String onderwerp = Uri.encodeComponent('Contact info');
-      final String bericht = Uri.encodeComponent(
-        'Dag Annemie, natuurlijk ben je geslaagd ! \n\n Maar ik heb een aantal vragen : \n --Vul hier je vragen in... --- \n\n $emailBezoeker ',
-      );
-      final Uri emailUri = Uri.parse(
-        'mailto: r0433145@student.thomasmore.be?subject=$onderwerp&body=$bericht',
-      );
+      await stuurMail(emailBezoeker);
+    }
+  }
 
-      if (await canLaunchUrl(emailUri)) {
-        await launchUrl(
-          emailUri,
-          mode:
-              LaunchMode.externalApplication, // Voorkomt blanco schermen op web
-        );
-      } else {
-        print('Kon de e-mailapp niet openen');
-      }
+  Future<void> stuurMail(String emailBezoeker) async {
+    final String subject = Uri.encodeComponent('Contact info');
+
+    final String body = Uri.encodeComponent(
+      'Dag Annemie, natuurlijk ben je geslaagd!!\n\n'
+      'Maar ik heb een aantal vragen:\n'
+      '--- Vul hier je vragen in ---\n\n'
+      'Ik ontvang  de antwoorden graag op : $emailBezoeker',
+    );
+
+    final Uri emailUri = Uri.parse(
+      'mailto:r0433145@student.thomasmore.be?subject=$subject&body=$body',
+    );
+    print('Emailadres bezoeker : $emailUri');
+    bool gelukt = await launchUrl(
+      emailUri,
+      mode: LaunchMode.externalApplication,
+    );
+    if (!gelukt) {
+      print('Kon emailapp niet openen');
     }
   }
 

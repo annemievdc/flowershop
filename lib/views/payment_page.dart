@@ -177,6 +177,23 @@ class _PaymentPageState extends State<PaymentPage> {
                   });
                 },
                 onPayPressed: () async {
+                  if (widget.cartViewModel.cart.isEmpty) {
+                    showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                        shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        backgroundColor: AppTheme.darkSlate,
+                        title: Text(
+                          "Plaats minimum 1 bloem in het mandje",
+                          style: AppTextStyles.cardbody(context),
+                        ),
+                      ),
+                    );
+                    return;
+                  }
+
                   if (!_shippingFormKey.currentState!.validate()) {
                     return;
                   }

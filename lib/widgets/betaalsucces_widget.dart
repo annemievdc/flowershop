@@ -34,7 +34,7 @@ void betaalSucces(BuildContext context) {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(60),
                 child: Image.asset(
-                  'assets/images/addamscar.png',
+                  'assets/images/addamsCar.png',
 
                   fit: BoxFit.contain,
                 ),

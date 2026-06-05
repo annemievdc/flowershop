@@ -128,20 +128,19 @@ class CartPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (cartViewModel.cart.isNotEmpty) ...[
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      width: double.infinity,
 
-                      child: AppButton(
-                        onPressed: () {
-                          DefaultTabController.of(context).animateTo(4);
-                        },
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: double.infinity,
 
-                        text: 'Verder naar betaling',
-                      ),
+                    child: AppButton(
+                      onPressed: () {
+                        DefaultTabController.of(context).animateTo(4);
+                      },
+
+                      text: 'Verder naar betaling',
                     ),
-                  ],
+                  ),
                 ],
               ),
             );

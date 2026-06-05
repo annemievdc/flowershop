@@ -57,8 +57,9 @@ class _MailDialoogState extends State<MailDialoog> {
         ),
       ),
       title: Text(
-        'Lurch beantwoord uw vragen',
+        'You Raaaang ? \n Lurch beantwoord uw vragen',
         style: AppTextStyles.cardtitle(context),
+        textAlign: TextAlign.center,
       ),
       actions: [
         AppButton(
