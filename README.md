@@ -1,4 +1,5 @@
 # flowershop
+Not your average flower shop. A gothic-inspired Flutter application where even Wednesday Addams might find the perfect bouquet.
 
 ## Installation & Setup
 
