@@ -12,7 +12,7 @@
 
 1. Clone this repository:
    ```bash
-   git clone https://github.comannemievdc/flowershop.git
+   git clone https://github.com/annemievdc/flowershop.git
    ```
 
 2. Navigate to the project directory:
