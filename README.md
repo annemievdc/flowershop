@@ -40,7 +40,7 @@ Not your average flower shop. A gothic-inspired Flutter application where even W
 
 2. Navigate to the project directory:
    ```bash
-   cd flowershop-main
+   cd flowershop
    ```
 
 3. Install dependencies:
